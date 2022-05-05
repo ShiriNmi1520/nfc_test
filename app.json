@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "nfc_test",
+    "slug": "nfc_test",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
