@@ -6,20 +6,14 @@ import nfcManager, { NfcEvents, NfcTech } from 'react-native-nfc-manager';
 export default function App() {
   const [nfcData, setNfcData] = useState();
   async function getNFCInfo() {
-    try {
-      nfcManager.registerTagEvent();
-      
-      await nfcManager.requestTechnology(NfcTech.Ndef);
-      const tag = await nfcManager.getTag();
-      setNfcData(tag);
-    }
-    catch (ex){
-      console.error('exception', ex)
-    }
-    finally {
-      nfcManager.unregisterTagEvent();
-      nfcManager.cancelTechnologyRequest();
-    }
+    nfcManager.registerTagEvent();
+    
+    await nfcManager.requestTechnology(NfcTech.Ndef);
+    const tag = await nfcManager.getTag();
+    setNfcData(tag);
+
+    nfcManager.unregisterTagEvent();
+    nfcManager.cancelTechnologyRequest();
   }
 
   useEffect(() => {
